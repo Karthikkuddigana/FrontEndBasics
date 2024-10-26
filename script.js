@@ -34,9 +34,11 @@
 //  }
 
  // promises implementation 
+ //also implemented loading functionality
  function getData(word){
     const url=`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`; 
     return new Promise((resolve,reject)=>{
+        resultContent.innerHTML="Loading..."
         try{
             console.log("getData called"); 
             const response= fetch(url); 
@@ -69,6 +71,7 @@
         Your browser does not support the audio tag.
         </audio>`;
     }).catch((message)=>{
+        resultContent.innerHTML="The word couldn't be found...Oops!"
         console.log("error received aborting"); 
         console.log(message)
     }); 
