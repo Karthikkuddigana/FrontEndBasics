@@ -1,0 +1,23 @@
+#MainContent{
+    margin-left: 30%;
+    margin-top: 10%;
+    border: 2px solid black;
+    width: 40%;
+    padding: 5%;
+}
+#ResultContent{
+    margin-left: 30%;
+    margin-top: 5%;
+    border: 2px solid black;
+    width: 40%;
+    padding: 5%;
+}
+select{
+    display: inline-block;
+}
+p{
+    border: 2px solid black;
+}
+#DropDownContent{
+    
+}
