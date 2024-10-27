@@ -76,3 +76,50 @@
         console.log(message)
     }); 
  })
+
+ const submitWeatherForm=document.querySelector("#SubmitButtonWeatherForm"); 
+ const resultWeatherContent=document.querySelector("#WeatherResultContent"); 
+ const inputLocation=document.querySelector("#InputLocation"); 
+
+ function getWeatherData(location){
+    const url=`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&key=GJGAL6Y4228F2LTC6AYK5UTAJ`; 
+    return new Promise((resolve,reject)=>{
+        resultWeatherContent.innerHTML="Loading..."
+        try{
+            console.log("getData called"); 
+            const response= fetch(url,{
+                headers:{
+                    "Content-Type":"application/json", 
+                }
+            }); 
+            // if(!response.ok){
+            //     throw new Error(`Response status: ${response.status}`); 
+            // }
+            response.then((response)=>{
+                const json = response.json(); 
+                console.log(json); 
+                resolve(json);
+            }
+             )
+           
+        }
+        catch(error){
+            reject(error.message); 
+        }
+    })
+ }
+
+
+ submitWeatherForm.addEventListener("click",function fetchResult(e){
+    e.preventDefault(); 
+    let word=inputLocation.value; 
+    getWeatherData(word).then((response)=>{
+        console.log(response)
+        resultWeatherContent.innerHTML=response.description; 
+        
+    }).catch((message)=>{
+        resultWeatherContent.innerHTML="The location couldn't be found...Oops!"
+        console.log("error received aborting"); 
+        console.log(message)
+    }); 
+ })
