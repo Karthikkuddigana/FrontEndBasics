@@ -194,3 +194,45 @@ function sort(arr1,arr2)
  }
 let array1=[8,8,1,3,3,1,9,4,5,10,11,12,-4,0,0,0,-4,-6,-4]; 
  console.log(MergeSort(array1)); 
+
+ class Node{
+    constructor(value){
+        this.value=value; 
+        this.next=null; 
+    }
+ }
+ class LinkedList{
+    headNode={
+        next: null, 
+    }
+    insertNode(value){
+        // console.log(this.headNode.next)
+        let myNewNode=new Node(value)
+        if(this.headNode.next==null){
+            this.headNode.next=myNewNode; 
+            // console.log(this.headNode.next.value)
+        }
+        else{
+            let currNode=this.headNode.next; 
+            while(currNode.next){
+                // console.log(currNode.value); 
+                currNode=currNode.next; 
+            }
+            currNode.next=myNewNode; 
+        }
+    }
+    printNode(){
+        let currNode=this.headNode.next; 
+        while(currNode.next){
+            console.log(currNode.value); 
+            currNode=currNode.next;         
+        }
+        console.log(currNode.value); 
+    }
+ }
+ let myLinkedList=new LinkedList(); 
+ myLinkedList.insertNode(9); 
+ myLinkedList.insertNode(15); 
+ myLinkedList.insertNode(25); 
+ myLinkedList.insertNode(36); 
+ myLinkedList.printNode(); 
